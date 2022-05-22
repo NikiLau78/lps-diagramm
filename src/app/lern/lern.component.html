@@ -1,0 +1,72 @@
+<table>
+    <tr>
+        <td style="width: 135mm;">
+            <div class="content">
+                <h1 style="font-weight: bold;">Lern-Modus
+
+                </h1>
+                <div class="orange ui buttons">
+                    <button class="ui button" (click)="showFirst()" title="Startet die Prüfung neu in sortierter Reihenfolge.">Sortiert</button>
+                    <button class="ui button" (click)="showFirstRandom()" title="Startet die Prüfung neu in zufälliger Reihenfolge.">Zufall</button>
+                </div><br>
+
+
+                <!--button class="ui orange button" (click)="showFirst()">|<</button>
+                <button class="ui orange button" (click)="showRev()"><</button>
+                <button class="ui orange button" (click)="showNext()">></button>
+                <button class="ui orange button" (click)="showLast()">>|</button-->
+                <br>
+                <div class="header">{{ frage.fragenId }}. {{ frage.frage }}</div><br>
+                <ng-container [ngSwitch]="frage.fragetyp">
+                    <div *ngSwitchCase="'multi'">
+                        <div class="metadata" id="test" *ngFor="let antwort of frage.antwort; index as i">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="example" [id]="frage.antwortenId" (click)="clickEvent(i)" (change)="getAnswers($event)">
+                                <label>{{ antwort }}</label>
+                            </div><br>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'single'">
+                        <div class="metadata" id="test" *ngFor="let antwort of frage.antwort; index as i">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="example2" [id]="frage.antwortenId" (click)="clickEvent(i)" (change)="getAnswers($event)">
+                                <label>{{ antwort }}</label>
+                            </div><br>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'fill'">
+                        <div class="ui input focus">
+                            <input type="text" autocomplete="off" name="fillIn" [id]="frage.antwortenId" (change)="getFill($event)">
+                        </div><br>
+                    </div>
+                </ng-container>
+                <br>
+            </div><br><br>
+            <button class="ui orange button" (click)="checkAntwort()">prüfen</button>
+            <!--button class="ui blue button" (click)="checkErgebnis()">Ergebnis anzeigen</button-->
+            <button class="ui light-gray button" (click)="vomStartButton()">vom Start</button>
+            <button class="ui blue button" (click)="checkErgebnis()">Ergebnis anzeigen</button>
+
+
+        </td>
+       <td style="vertical-align: bottom; text-align: center;">
+        <tr>
+            <h1>{{checkEnde}}</h1>
+            <h1 class="right" style="white-space: pre;">{{check}}</h1>
+            <ngx-charts-pie-chart 
+                [results]="ergebnisDiagram"
+                [legend]="false"
+                [legendTitle]="'Product Sale Report'" 
+                [view]="[300,200]"
+                [labels]="true" >
+            </ngx-charts-pie-chart>
+        </tr>
+        <tr>
+                <h4 style="white-space: pre;">{{checkTest}}</h4>
+                <button class="ui orange button" (click)="loesungsButton()">Lösungen</button>
+                <button class="ui blue button" (click)="tipButton()">Tip's</button>
+                <!--button class="ui red button" (click)="showNext()">{{nachFrage}}</button-->
+            </tr>
+        </td>
+    </tr>
+</table>

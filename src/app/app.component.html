@@ -1,0 +1,31 @@
+<img style="margin-left: 1cm;margin-top: 5mm;" src="../assets/Logo_head.png" alt="Logo">
+<br>
+<!--div id="rand">
+    <div class="blue ui buttons">
+        <button class="ui button" routerLink="home" routerLinkActive="active">Home</button>
+        <button class="ui button" routerLink="liste" routerLinkActive="active">Fragelisten</button>
+        <button class="ui button" routerLink="lernmodus" routerLinkActive="active">Lernmodus</button>
+        <button class="ui button" routerLink="pruefmodus" routerLinkActive="active">Prüfmodus</button>
+        <button class="ui button" routerLink="optionen" routerLinkActive="active">Optionen</button>
+    </div>
+    <br>
+    <router-outlet></router-outlet-->
+<div class="ui inverted menu" style="background-color: #0E6EB8; margin-left: 1cm;max-width: 200mm;">
+
+
+    <a class="orange item aktive" routerLink="home" routerLinkActive="active">
+                Home</a>
+    <a class="orange item" routerLink="liste" routerLinkActive="active">
+                Fragelisten</a>
+    <a class="orange item" routerLink="lernmodus" routerLinkActive="active">
+                Lernmodus</a>
+    <a class="orange item" routerLink="pruefmodus" routerLinkActive="active">
+                Prüfmodus</a>
+    <a class="orange item" routerLink="optionen" routerLinkActive="active">
+                    Optionen</a>
+
+</div>
+
+<div class="ui segment" style="margin-left: 1cm; max-width: 200mm;">
+    <router-outlet></router-outlet>
+</div>

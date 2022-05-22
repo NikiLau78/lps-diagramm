@@ -1,0 +1,63 @@
+<table>
+    <tr>
+        <td style="width: 135mm;">
+            <div class="content">
+                <h1 style="border-bottom-style: double;">Prüf-Modus
+                </h1>
+
+                <div class="ui top attached tabular menu" *ngIf="auswahl!='start'">
+                    <div class="active item">Auswahl</div>
+                </div>
+                <div class="ui bottom attached active tab segment" *ngIf="auswahl!='start'">
+                    <!-- mit ngIf gelöst -->
+                    <em *ngIf="teilPruef == true" class="ui orange label">Teilprüfung</em>
+                    <em *ngIf="teilPruef == false" class="ui orange label">Vollprüfung</em>
+                    <!-- Variable über Funktion geändert -->
+                    <em class="ui orange label">{{zufall}}</em>
+                    <em *ngIf="fragMulti" class="ui orange label">Multiple Choice</em>
+                    <em *ngIf="fragSingle" class="ui orange label">Single Choice</em>
+                    <em *ngIf="fragFill" class="ui orange label">Fill In</em>
+                    <br>
+                    <p style="font-size: 10px;">*zum Ändern bitte auf Optionen klicken</p>
+                </div>
+                <button class="ui blue button" (click)="vomStartButton()">Start</button>
+                <br>
+                <br>
+                <ng-container *ngIf="frage">
+                    <div class="header">{{ frage.fragenId }}. {{ frage.frage }}</div><br>
+                    <ng-container [ngSwitch]="frage.fragetyp">
+                        <div *ngSwitchCase="'multi'">
+                            <div class="metadata" id="test" *ngFor="let antwort of frage.antwort; index as i">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="example" [id]="frage.antwortenId" (click)="clickEvent(i)" (change)="getAnswers($event)">
+                                    <label>{{ antwort }}</label>
+                                </div><br>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'single'">
+                            <div class="metadata" id="test" *ngFor="let antwort of frage.antwort; index as i">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="example2" [id]="frage.antwortenId" (click)="clickEvent(i)" (change)="getAnswers($event)">
+                                    <label>{{ antwort }}</label>
+                                </div><br>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'fill'">
+                            <div class="ui input focus">
+                                <input type="text" autocomplete="off" name="fillIn" [id]="frage.antwortenId" (change)="getFill($event)" #textantwort>
+                            </div><br>
+                        </div>
+                    </ng-container>
+                    <br>
+                    <button style="margin-top: 2mm;" class="ui orange button" (click)="checkAntwort()" *ngIf="checkEnde!='STOP!'">abschicken</button>
+                </ng-container>
+            </div>
+        </td>
+        <td style="vertical-align: bottom; text-align: center;" *ngIf="frage">
+            <h1>{{checkEnde}}</h1>
+            <h4 style="white-space: pre;">{{checkTest}}</h4>
+            <h4><i class="stopwatch icon"></i> {{timeLeft}} Seconds Left....</h4>
+            <button class="ui blue button" (click)="checkErgebnis()">Auswertung</button>
+        </td>
+    </tr>
+</table>

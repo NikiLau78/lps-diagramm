@@ -1,0 +1,69 @@
+<div class="content" style="width: 135mm;">
+    <h1 style="border-bottom-style: double;">Optionen</h1>
+    <div class="ui form" style="margin-top: 2mm; border-bottom-style: double;">
+        <div class="inline fields">
+            <label>Welche Art von Prüfung ?</label>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="frequenc" (click)="vollP($event)" [checked]="!fs.teilPruef">
+                    <label>Vollprüfung</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="frequenc" (click)="teilP($event)" [checked]="fs.teilPruef">
+                    <label>Teilprüfung</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sortiert oder Unsortiert -->
+    <div class="ui form" style="margin-top: 2mm; border-bottom-style: double;">
+        <div class="inline fields">
+            <label>Die Fragen?</label>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="frequen" (click)="sort($event)" [checked]="!fs.random">
+                    <label>sortiert</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="frequen" (click)="unSort($event)" [checked]="fs.random">
+                    <label>unsortiert</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ab hier Fragetyp-Abfrage -->
+    <div class="ui form" style="margin-top: 2mm;">
+        <div class="inline fields">
+            <label>Welcher Fragetyp soll bearbeitet werden ?</label>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="frequency" (click)="multi($event)" [checked]="fs.fragMulti">
+                    <label>Multiple Choice</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="frequency" (click)="single($event)" [checked]="fs.fragSingle">
+                    <label>Single Choice</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="frequency" (click)="fill($event)" [checked]="fs.fragFill">
+                    <label>Fill In</label>
+                </div>
+            </div>
+            <!--div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="frequency" (click)="mix()">
+                    <label>Mix All</label>
+                </div>
+            </div-->
+        </div>
+    </div>
+    <button class="ui red button" routerLink="../pruefmodus">Zur Prüfung</button>
+</div>

@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <td>
+            <div class="content">
+                <h1>Multipe-Choice</h1>
+                <button class="ui orange button" (click)="showFirst()">|<</button>
+                <button class="ui orange button" (click)="showRev()"><</button>
+                <button class="ui orange button" (click)="showNext()">></button>
+                <button class="ui orange button" (click)="showLast()">>|</button>
+                <br>
+                <div class="header">{{ frage.fragenId }}. {{ frage.frage }}</div><br>
+                <div class="metadata" id="test" *ngFor="let antwort of frage.antwort; index as i">
+                    <div class="ui checkbox" id="m">
+                        <input type="checkbox" name="example" [id]="frage.antwortenId" (click)="myCheckbox(i)" (change)="getAnswers($event)">
+                        <label>{{ antwort }}</label>
+                    </div><br>
+                </div><br><br>
+                <button class="ui red button" routerLink='/liste'>zurück zur Frageliste</button>
+                <!--button class="ui green button" (click)="checkAntwort()">prüfen</button-->
+            </div>
+        </td>
+        <td>
+            <h1 class="right">{{check}}</h1>
+        </td>
+    </tr>
+</table>

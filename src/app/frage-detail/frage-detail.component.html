@@ -1,0 +1,11 @@
+<div class="content">
+    <div class="header">{{ frage.fragenId }}. {{ frage.frage }}</div><br>
+    <div class="metadata" *ngFor="let antwort of frage.antwort; index as i">
+        <ul class="header">
+            <li>
+                {{ frage.antwortenId[i] }}. {{ antwort }}
+            </li>
+        </ul>
+    </div>
+    <p style="color: green; font-weight: bolder;">Antwort: {{ frage.korrekteAntwort }}</p>
+</div>
